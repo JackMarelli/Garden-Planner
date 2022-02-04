@@ -31,9 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `barbecue` (
   `ID` int(11) NOT NULL,
   `Tipologia` varchar(50) NOT NULL,
-  `Marca` varchar(252) NOT NULL,
-  `Nome` varchar(252) NOT NULL,
-  `Dimensioni` varchar(252) NOT NULL,
+  `Marca` varchar(256) NOT NULL,
+  `Nome` varchar(256) NOT NULL,
+  `Dimensioni` varchar(256) NOT NULL,
   `Potenza` varchar(20) NOT NULL,
   `Immagine` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -45,17 +45,17 @@ CREATE TABLE `barbecue` (
 --
 
 CREATE TABLE `fiori` (
-  `ID` int(11) DEFAULT NULL,
-  `Nome` varchar(255) DEFAULT NULL,
-  `Tipologia` varchar(255) DEFAULT NULL,
-  `Dimensioni` varchar(255) DEFAULT NULL,
-  `AlltezzaMassima` varchar(255) DEFAULT NULL,
-  `Colore` varchar(255) DEFAULT NULL,
-  `Espsizione` varchar(255) DEFAULT NULL,
-  `PeriodoFioritura` varchar(255) DEFAULT NULL,
+  `ID` int(11) NOT NULL,
+  `Nome` varchar(256) DEFAULT NULL,
+  `Tipologia` varchar(256) DEFAULT NULL,
+  `Dimensioni` varchar(256) DEFAULT NULL,
+  `AltezzaMassima` varchar(256) DEFAULT NULL,
+  `Colore` varchar(256) DEFAULT NULL,
+  `Espsizione` varchar(256) DEFAULT NULL,
+  `PeriodoFioritura` varchar(256) DEFAULT NULL,
   `Profumo` varchar(2) DEFAULT NULL,
-  `QuantitàAcqua` varchar(255) DEFAULT NULL,
-  `ResistenzaGelo` varchar(255) DEFAULT NULL,
+  `QuantitàAcqua` varchar(256) DEFAULT NULL,
+  `ResistenzaGelo` varchar(256) DEFAULT NULL,
   `Costo` float DEFAULT NULL,
   `Immagine` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
