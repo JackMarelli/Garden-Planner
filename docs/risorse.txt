@@ -1,0 +1,6 @@
+GITHUB:
+https://github.com/JackMarelli/Garden-Planner
+
+FIGMA:
+https://www.figma.com/file/pnPdEWrqm8QUJpllAc8QY6/Configuratore-di-esterni?node-id=0%3A1
+

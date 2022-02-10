@@ -1,0 +1,50 @@
+COMPONENTI, COMPITI, RUOLI:
+Marelli Giacomo	Capogruppo,
+		analisi fattibilità,
+		analisi materiali,
+		sv. front-end,
+		sv. back-end,
+		progettista database.
+
+Camagni Riccardo	sv. back-end,
+		progettista database,
+		sv. database,
+		documentazione.
+
+Russo Edoardo	sv. back-end, 
+		sv. database,
+		documentazione.
+
+GITHUB, FIGMA: 
+https://github.com/JackMarelli/Garden-Planner
+https://www.figma.com/file/pnPdEWrqm8QUJpllAc8QY6/Configuratore-di-esterni?node-id=0%3A1
+
+PROBLEMA E SOLUZIONE:
+Alcune persone hanno la necessità di configurare il proprio giardino avendo
+una visuale completa e facilmente comprensibile dello spazio che hanno a
+disposizione, il nostro configuratore di esterni propone una soluzione semplice,
+intelligente e soprattutto accessibile a tutti, senza la necessità di prenotare
+colloqui con esperti o calcolare preventivi a pagamento.
+
+Il configuratore consisterà in una Web App in cui inserire le dimensioni del
+proprio giardino e posizionare all'interno piante, decorazioni, barbeque etc.
+disponibili nel database dell'azienda che accederà al progetto. Il planner
+potrà anche consigliare le scelte migliori in base alla località (manto erboso,
+piante...) e in base agli oggetti già posizionati (se una pianta sta bene con
+un'altra, se la posizione è inappropriata...).
+
+Il nome della Web App deve ancora essere deciso, parole chiave:
+Configuratore (Planner),
+Giardino (Garden),
+...
+
+ELEMENTI HARDWARE/SOFTWARE:
+SW: Eventuale server, database.
+HW: Eventuale server
+LINGUAGGI: HTML, CSS, JavaScript, MySQL, PHP.
+
+ANALISI DI MERCATO:
+L'unica idea simile che ho trovato è quella di Gardena (https://my-garden.gardena.com/it)
+diversa in quanto non mette limiti alle dimensioni e forma del giardino,
+non si rifà ad un database di oggetti specifici ed esistenti, ma a piante e
+altri oggetti di dimensioni generiche e immagini stock.
