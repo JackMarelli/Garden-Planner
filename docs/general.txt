@@ -33,11 +33,6 @@ potrà anche consigliare le scelte migliori in base alla località (manto erboso
 piante...) e in base agli oggetti già posizionati (se una pianta sta bene con
 un'altra, se la posizione è inappropriata...).
 
-Il nome della Web App deve ancora essere deciso, parole chiave:
-Configuratore (Planner),
-Giardino (Garden),
-...
-
 ELEMENTI HARDWARE/SOFTWARE:
 SW: Eventuale server, database.
 HW: Eventuale server

@@ -31,6 +31,7 @@ nav {
   width: 100%;
   height: 50px;
   border-bottom: 2px solid var(--gray-medium);
+  background-color: var(--white);
 }
 
 nav span {
@@ -85,6 +86,26 @@ nav img {
   max-width: 450px;
 }
 
+.shape-option img {
+  width: 350px;
+}
+
+.shape-option img:hover {
+  filter: brightness(90%);
+  transform: scale(1.07);
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+.setup-header {
+height: 220px;
+}
+
+.setup-header p {
+  margin: 10px 0 0 0;
+  font-size: 24px;
+}
+
 /* GENERAL CLASSES */
 .btn {
   width: 135px;
@@ -112,4 +133,17 @@ nav img {
   color: var(--green-dark);
   background-color: var(--white);
   border: 2px solid var(--green-dark);
+}
+
+.lines {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  position: absolute;
+  height: 93%;
+  z-index: -1;
+}
+
+.lines img {
+  margin: -5px 0 0 0;
 }
