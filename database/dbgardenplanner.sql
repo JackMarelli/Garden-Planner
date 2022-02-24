@@ -32,7 +32,12 @@ CREATE TABLE `prodotti` (
   `ID` int(11) NOT NULL,
   `NomeProdotto` varchar(64) NOT NULL,
   `Categoria` varchar(56) NOT NULL,
-  `Informazioni Prodotti` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+  `Informazioni Prodotti` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `Larghezza` int(11) NOT NULL,
+  `Lunghezza` int(11) NOT NULL,
+  `Costo` float(20) NOT NULL,
+  `immagine` varchar(255) NOT NULL,
+  PRIMARY KEY (ID)
 ) ;
 
 --
