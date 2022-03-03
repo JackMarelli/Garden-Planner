@@ -56,7 +56,7 @@ nav span::after {
   height: 2px;
   display: block;
   background: black;
-  transition: .3s;
+  transition: 0.3s;
   margin: auto;
 }
 
@@ -88,18 +88,18 @@ nav img {
 
 .shape-option img {
   width: 350px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .shape-option img:hover {
   filter: brightness(85%);
   transform: scale(1.07);
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .setup-header {
-height: 220px;
+  height: 220px;
 }
 
 .setup-header p {
@@ -157,7 +157,7 @@ height: 220px;
 }
 
 /* SIZE SETUP */
-.rect-container {
+.shape-container {
   height: 250px;
   width: 600px;
   border: 1px solid transparent;
@@ -165,8 +165,18 @@ height: 220px;
   position: relative;
 }
 
-.rect-container .rect {
+.shape-container .rect {
   background-image: url(../../images/elements/rect-arrows.svg);
+  background-size: 100% 100%;
+  width: 600px;
+  height: 200px;
+  transform: rotateX(20deg);
+}
+
+.shape-container .ellipse
+ {
+  background-image: url(../../images/elements/ellipse-arrows.svg);
+  border: solid black;
   background-size: 100% 100%;
   width: 600px;
   height: 200px;
@@ -182,7 +192,7 @@ height: 220px;
 .dim-y {
   position: absolute;
   top: 35%;
-  left: -35px;
+  left: 15px;
 }
 .size-input {
   display: flex;
@@ -202,4 +212,12 @@ height: 220px;
 
 .size-input img {
   transform: scale(0.9);
+}
+
+.btn-circle {
+  background-color: #48c555;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  cursor: pointer;
 }
