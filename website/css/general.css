@@ -161,12 +161,18 @@ nav img {
   height: 250px;
   width: 600px;
   border: 1px solid transparent;
-  perspective: 250px;
+  perspective: 240px;
   position: relative;
 }
 
+/*
+.shape-container * {
+  border: 2px solid magenta;
+}
+*/
+
 .shape-container .rect {
-  background-image: url(../../images/elements/rect-arrows.svg);
+  background-image: url(../../images/elements/rect-arrows.png);
   background-size: 100% 100%;
   width: 600px;
   height: 200px;
@@ -175,8 +181,7 @@ nav img {
 
 .shape-container .ellipse
  {
-  background-image: url(../../images/elements/ellipse-arrows.svg);
-  border: solid black;
+  background-image: url(../../images/elements/ellipse-arrows.png);
   background-size: 100% 100%;
   width: 600px;
   height: 200px;
@@ -192,7 +197,7 @@ nav img {
 .dim-y {
   position: absolute;
   top: 35%;
-  left: 15px;
+  left: -35px;
 }
 .size-input {
   display: flex;
