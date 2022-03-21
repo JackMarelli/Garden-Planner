@@ -2,10 +2,31 @@
 	
 	function getDataBase(){
 		//$sql_query = "SELECT * FROM prodotti  ";
-		$sql_query = "SELECT ID,NomeProdotto,Categoria,Larghezza,Lunghezza,Costo,immagine FROM prodotti  ";
-		getDati($sql_query);
-
+		$sql_query = "SELECT ID,NomeProdotto,Categoria,InformazioniProdotti,Larghezza,Lunghezza,Costo,immagine FROM prodotti  ";
+		//getDati($sql_query);
+        getDatiII($sql_query);
 	}	
+
+	function getDatiII($sql_query){
+		include "config.php";
+
+		$res=mysqli_query($sql_query,MYSQLI_ASSOC);
+	    if($res && mysqli_num_rows($res)>0){
+			// qui ci andrà il codice per stampare i risultati
+			while($row=mysqli_fetch_assoc($res)){
+				echo $row['ID']." <br>";
+				echo $row['NomeProdotto']." <br>";
+				echo $row['Categoria']." <br> ";
+				echo $row['InformazioniProdotti']." <br> ";
+				echo $row['Larghezza']." <br> ";
+				echo $row['Lunghezza']." <br> ";
+				echo $row['Costo']." <br> ";
+				echo $row['immagine']." <br> ";
+			}
+		}
+		
+	}
+
 
 	function getInformazioni(){
 		include "config.php";
@@ -85,7 +106,7 @@
 	}
 
 
-
+	
 	getDataBase();
 	//getAllCategorie();
 	//getProductByID("3");
