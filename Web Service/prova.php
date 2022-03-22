@@ -90,10 +90,4 @@
 	//getAllCategorie();
 	//getProductByID("3");
 	//getInformazioni();
-
-
-
-
-
-
 ?>
