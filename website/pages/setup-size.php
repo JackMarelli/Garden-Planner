@@ -1,5 +1,3 @@
-
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,11 +6,12 @@
     <title>PLANTERA | Setup</title>
     <link rel="stylesheet" href="../css/mybootstrap.css" />
     <link rel="stylesheet" href="../css/general.css" />
+    <script src="../js/script.js"></script>
   </head>
   <body>
     <div class="container col">
       <nav>
-        <img src="../../logo/logo_small.png" alt="" class="h-100 ml-1" />
+        <img onclick="window.location.assign('pages/contact.php')" src="../../logo/logo_small.png" alt="" class="h-100 ml-1" />
         <span>Tutorial</span>
         <span>FAQ</span>
         <span>Contact</span>
@@ -30,18 +29,25 @@
           <p>Imposta le dimensioni:</p>
         </div>
         <div class="shape-container">
-          <!-- trasforma in php e richiama questa pagina con parametro ellisse o rect, qui inserisci immagine giusta -->
-          <div class="rect"></div>
-         <!--  <div class="ellipse"></div> -->
+          <?php
+          if($_GET["shape"] == "rect") {
+            echo '<div class="rect"></div>';
+          } else if ($_GET["shape"] == "ellipse") {
+            echo '<div class="ellipse"></div>';
+          } else {
+            echo "Forma non disponibile";
+          }
+          ?>
           <div class="dim-x">23</div>
           <div class="dim-y">45</div>
         </div>
         <div class="row size-input">
-          <input type="number" name="x" id="x" placeholder="32m" />
+          <input type="number" name="x" id="x" placeholder="32" />
           <img src="../../images/elements/icons/x.svg" alt="" />
-          <input type="number" name="y" id="y" placeholder="14m" />
+          <input type="number" name="y" id="y" placeholder="14" />
         </div>
-        <div class="mt-3 btn-circle center">
+        (Metri)
+        <div class="mt-3 btn-circle center" onclick="redirectToPlanner()">
           <img src="../../images/elements/icons/arrow.svg" alt="" />
         </div>
       </div>

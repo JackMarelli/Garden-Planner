@@ -6,26 +6,26 @@
     <link rel="stylesheet" href="css/mybootstrap.css">
     <link rel="stylesheet" href="css/general.css" />
     <script src="js/animations.js"></script>
-    <title>GARDEN PLANNER | Home</title>
+    <title>PLANTERA | Home</title>
   </head>
   <body>
     <div class="container col">
       <nav>
         <img src="../logo/logo_small.png" alt="" class="h-100 ml-1"/>
-        <span>Tutorial</span>
-        <span>FAQ</span>
-        <span>Contact</span>
+        <span onclick="window.location.assign('pages/tutorial.html')">Tutorial</span>
+        <span onclick="window.location.assign('pages/FAQ.php')">FAQ</span>
+        <span onclick="window.location.assign('pages/contact.php')">Contact</span>
       </nav>
       <div class="center fg-1">
         <div id="hero">
             <div class="col my-3">
-              <h1>Planter</h1>
+              <h1>Plantera</h1>
               <h2 class="my-2">
                 Arreda il tuo giardino <br> nel modo più intuitivo e veloce.
               </h2>
               <div class="row my-1">
-                <div class="btn cta-primary mr-2">Get started</div>
-                <div class="btn cta-secondary">Contact us</div>
+                <div onclick="window.location.assign('pages/setup-shape.html')" class="btn cta-primary mr-2">Get started</div>
+                <div onclick="window.location.assign('pages/contact.php')" class="btn cta-secondary">Contact us</div>
               </div>
             </div>
             <img id="rotating-tree" src="../images/7_bwtree-removebg-preview.png" alt="" />
