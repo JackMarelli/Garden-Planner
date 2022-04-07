@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 31, 2022 alle 13:55
+-- Creato il: Apr 07, 2022 alle 13:22
 -- Versione del server: 10.4.6-MariaDB
 -- Versione PHP: 7.3.8
 
@@ -51,7 +51,11 @@ INSERT INTO `prodotti` (`ID`, `NomeProdotto`, `Categoria`, `InformazioniProdotti
 (6, 'Calla', 'Fiore', '{\r\n	\"Clima\" : \"Mite\",\r\n        \"Colore\": \"Biancob avorio\",\r\n	\"EsposizioneSolare\" : \"Parziale\",\r\n	\"Crescita\" : \"Regolare\",\r\n	\"DaVaso\" : \"Si\",\r\n	\"Profumo\" : \"Si\",\r\n	\"AcquaGiornaliera\" : \"30ml\"\r\n}', 55, 30, 25, 'https://www.giardinaggio.it/piante-appartamento/piante-da-interno/calle-da-appartamento_NG4.jpg'),
 (7, 'Rosa', 'Fiore', '{\r\n	\"Clima\" : \"Mite\",\r\n        \"Colore\": \"Rosso porpora\",\r\n	\"EsposizioneSolare\" : \"Abbondante\",\r\n	\"Crescita\" : \"Moderata\",\r\n	\"DaVaso\" : \"Si\",\r\n	\"Profumo\" : \"Si\",\r\n	\"AcquaGiornaliera\" : \"10ml\"\r\n}', 25, 25, 42, 'https://images.obi-italia.it/product/DE/1500x1500/299674_1.jpg'),
 (8, 'Kingsize Kamado Barbecue', 'Barbecue ', '{\r\n	\"Dimensioni griglia\" : \"40x70cm\",\r\n	\"Alimentazione\" : \"Gas\",\r\n	\"Altezza\" : \"1,20m\",\r\n	\"Colore\": \"Nero brace\",\r\n	\"Peso\": \"50 kg\",\r\n	\"Accessori\": \"Pinze multiuso, cappello da chef, Termometro per carne, arrotino\"\r\n}', 132, 125, 1049, 'https://res.cloudinary.com/chal-tec/image/upload/w_450,q_auto,f_auto/bbg/10028282/Gallery/10028282_yy_0001_front___Klarstein_Kingsize_Kamado-Grill_Keramikgrill_reedit.jpg'),
-(9, 'Quercia', 'Pianta', '{\r\n        \"Sottocategoria\": \"Albero\",\r\n	\"NomeAlberoScientifico\" : \"Quercus\",\r\n	\"AltezzaMassima\" : \"10 Metri\",\r\n	\"ClimaFavorevole\": \"Qualsiasi\",\r\n	\"Irrigazione\" : \"Minima\",\r\n	\"EspansioneRadici\" : \"2 metro per lato\",\r\n	\"Sempreverde\" : \"No\",\r\n	\"Potatura\" : \"Ogni inverno\"\r\n	\r\n}', 130, 80, 40, 'https://www.verdevip.eu/2582-medium_default/quercia-artificiale-gigante-con-frutti-uvr-da-3-5-a-5-mt-venduta-solo-telefonicamente.jpg');
+(9, 'Quercia', 'Pianta', '{\r\n        \"Sottocategoria\": \"Albero\",\r\n	\"NomeAlberoScientifico\" : \"Quercus\",\r\n	\"AltezzaMassima\" : \"10 Metri\",\r\n	\"ClimaFavorevole\": \"Qualsiasi\",\r\n	\"Irrigazione\" : \"Minima\",\r\n	\"EspansioneRadici\" : \"2 metro per lato\",\r\n	\"Sempreverde\" : \"No\",\r\n	\"Potatura\" : \"Ogni inverno\"\r\n	\r\n}', 130, 80, 40, 'https://www.verdevip.eu/2582-medium_default/quercia-artificiale-gigante-con-frutti-uvr-da-3-5-a-5-mt-venduta-solo-telefonicamente.jpg'),
+(10, 'Cactus Zebra', 'Pianta', '{\r\n        \"Sottocategoria\": \"Pianta Grassa\",\r\n	\"Espansione\" : \"1 Metri\",\r\n	\"ClimaFavorevole\": \"Mite\",\r\n	\"Irrigazione\" : \"Poca\",\r\n	\"Esposizione\" : \"Soleggiato\",\r\n	\"Terreno\" : \"Sabbioso\"\r\n}', 15, 15, 8, 'https://www.ilgiardinocommestibile.it/wp-content/uploads/2020/08/cura-delle-piante-haworthia-attenuata-o-pianta-zebra.jpg'),
+(11, 'Melograno', 'Pianta', '{\r\n        \"Sottocategoria\": \"Albero\",\r\n	\"NomeAlberoScientifico\" : \"Punica granatum\",\r\n	\"AltezzaMassima\" : \"3 Metri\",\r\n	\"ClimaFavorevole\": \"Mite\",\r\n	\"Irrigazione\" : \"2 litri d\'acqua durante le prime settimane, in seguito non è necessario continuare\",\r\n	\"EspansioneRadici\" : \"1.5 metro per lato\",\r\n	\"Sempreverde\" : \"No\",\r\n	\"Potatura\" : \"Ogni inverno\"	\r\n}', 40, 40, 60, 'https://images.obi-italia.it/product/IT/1500x1500/485462_1.jpg'),
+(12, 'Giglio', 'Fiore', '{\r\n	\"Clima\" : \"Soleggiato\",\r\n        \"Colore\": \"Rosa tenue e bianco\",\r\n	\"EsposizioneSolare\" : \"completa\",\r\n	\"Crescita\" : \"regolare\",\r\n	\"DaVaso\" : \"Si\",\r\n	\"Profumo\" : \"Si\",\r\n	\"AcquaGiornaliera\" : \"30ml\"\r\n}', 15, 20, 22, 'https://img.pixers.pics/pho_wat(s3:700/FO/57/25/53/39/700_FO57255339_509e95826789e06564c84a5826ffd5eb.jpg,472,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,252,650,jpg)/carte-da-parati-bouquet-di-gigli-rosa-in-un-vaso-di-vetro.jpg.jpg'),
+(13, 'Photinia compatta', 'Pianta', '{\r\n        \"Sottocategoria\": \"Pianta Arbusto\",\r\n	\"Espansione\" : \"1 Metri\",\r\n	\"ClimaFavorevole\": \"Mite\",\r\n	\"Irrigazione\" : \"50ml al giorno per 90 giorni\",\r\n	\"Esposizione\" : \"Qualsiasi\",\r\n	\"Terreno\" : \"Argilloso\"\r\n}', 60, 100, 50, 'https://i.ebayimg.com/images/g/WNAAAOSwB-1Y4V7d/s-l300.jpg');
 
 --
 -- Indici per le tabelle scaricate
@@ -71,7 +75,7 @@ ALTER TABLE `prodotti`
 -- AUTO_INCREMENT per la tabella `prodotti`
 --
 ALTER TABLE `prodotti`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
