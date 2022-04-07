@@ -25,6 +25,11 @@
   box-sizing: border-box;
 
   font-family: "Inter";
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 nav {
@@ -179,8 +184,7 @@ nav img {
   transform: rotateX(20deg);
 }
 
-.shape-container .ellipse
- {
+.shape-container .ellipse {
   background-image: url(../../images/elements/ellipse-arrows.png);
   background-size: 100% 100%;
   width: 600px;
@@ -220,9 +224,104 @@ nav img {
 }
 
 .btn-circle {
-  background-color: #48c555;
-  width: 100px;
-  height: 100px;
+  background-color: var(--green-dark);
+  width: 80px;
+  height: 80px;
   border-radius: 100%;
   cursor: pointer;
+}
+
+/* PLANNER */
+.left {
+  min-width: 300px;
+  overflow: auto;
+  height: 100%;
+  border-right: solid var(--gray-medium);
+  resize: horizontal;
+}
+
+.right {
+}
+
+/* COLLAPSIBLE */
+.collapsible {
+  width: 100%;
+  background-color: var(--white);
+  color: var(--black);
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  font-weight: 700;
+  font-size: 18px;
+
+  transition: 0.5s;
+  padding: 15px;
+
+  border-bottom: 2px solid var(--gray-medium);
+}
+
+.active,
+.collapsible:hover {
+  background-color: var(--green-light);
+  transition: 0.5s;
+}
+
+.collapsible-content {
+  display: none;
+  overflow: hidden;
+  background-color: var(--white);
+  transition: 0.5s;
+  border-bottom: solid var(--gray-medium);
+}
+
+.product {
+  height: 15vh;
+  width: 100%;
+  padding: 10px;
+}
+
+.product .image {
+  height: 100%;
+  width: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product .image img {
+  height: 100%;
+}
+
+.product .text {
+  margin: 0 0 0 25px;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  /* flex-grow: 1; */
+}
+
+.product .text .name {
+  font-size: 16px;
+  width: 170px;
+  overflow: hidden;
+  white-space: nowrap;
+  align-self: flex-start;
+  text-overflow: ellipsis;
+}
+
+.product .text .seemore {
+  text-decoration: underline;
+  color: var(--gray-dark);
+  cursor: pointer;
+  font-size: 14px;
+  align-self: flex-start;
+  margin: 5px 0 0 0;
+}
+
+.product .text .price {
+  margin: 15px 0 0 0;
+  font-size: 24px;
 }
