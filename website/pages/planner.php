@@ -25,7 +25,7 @@
                         <div class="product row">
                             <div class="image"><img src="../../images/2_bbq.png" alt=""></div>
                             <div class="text col">
-                                <div class="name">Barbeque 1 long nameeeeee</div>
+                                <div class="name">Barbeque 1 long nameeeeee LOREM IPSUM DOLOR SIT AMET</div>
                                 <div class="seemore">See more...</div>
                                 <div class="price">699€</div>
                             </div>

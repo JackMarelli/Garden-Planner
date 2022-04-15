@@ -298,15 +298,19 @@ nav img {
 .product .text {
   margin: 0 0 0 25px;
   display: flex;
+  flex: 1 1 100%;
   flex-flow: column nowrap;
   height: 100%;
-  /* flex-grow: 1; */
+  flex-grow: 1;
+  width: 180px;
+  min-width: 0;
 }
 
 .product .text .name {
   font-size: 16px;
-  width: 170px;
+  width: 100%;
   overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
   align-self: flex-start;
   text-overflow: ellipsis;
