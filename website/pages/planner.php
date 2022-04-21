@@ -6,7 +6,6 @@
     <title>PLANTERA | Planner</title>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/mybootstrap.css">
-    <script src="../js/animations.js"></script>
 </head>
 <body>
     <div class="container col">
@@ -17,9 +16,9 @@
         <span>Contact</span>
     </nav>
     <div class="row fg-1">
-            <div class="col left">
+            <div id="products-menu" class="col left">
                 <button type="button" class="collapsible">Barbeque</button>
-                <div class="collapsible-content">
+                <div id="barbeque" class="collapsible-content">
                 <ul>
                     <li>
                         <div class="product row">
@@ -43,15 +42,6 @@
                     </li>
                 </ul>
                 </div>
-                <button type="button" class="collapsible">Open Collapsible</button>
-                <div class="collapsible-content">
-                <ul>
-                    <li>BBQ1</li>
-                    <li>BBQ2</li>
-                    <li>BBQ3</li>
-                    <li>BBQ4</li>
-                </ul>
-                </div>
             </div>
         <div class="col right fg-1">planner</div>
     </div>
@@ -60,5 +50,7 @@
         //echo "y".$_GET["y"];
     ?>
     </div>
+    <script src="../js/animations.js"></script>
+    <script src="../js/requests.js"></script>
 </body>
 </html>
