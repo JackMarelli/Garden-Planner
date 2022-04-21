@@ -20,6 +20,11 @@
 
 	}
 
+	function getProductByCategoty($categoria){
+		$sql_query = "SELECT NomeProdotto, Costo, immagine FROM prodotti WHERE Categoria='$categoria'";
+		getDati($sql_query);     
+	}
+
 	function getProductByID($id){
 		
 		$sql_query = "SELECT ID,NomeProdotto,Categoria,InformazioniProdotti,Larghezza,Lunghezza,Costo,immagine FROM prodotti WHERE ID='$id'";
@@ -82,13 +87,13 @@
 	}
 
 
-	
+	getProductByCategoty("Pianta");
 	//getDataBase();
 	//getAllCategorie();
 	//getProductByID("3");
 
 
-
+//prodotti di una categoria solo prezzi e
 
 
 
