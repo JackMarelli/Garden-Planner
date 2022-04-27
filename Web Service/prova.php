@@ -87,9 +87,9 @@
 	}
 
 
-	getProductByCategoty("Pianta");
+	//getProductByCategoty("Pianta");
 	//getDataBase();
-	//getAllCategorie();
+	getAllCategorie();
 	//getProductByID("3");
 
 

@@ -240,9 +240,6 @@ nav img {
   resize: horizontal;
 }
 
-.right {
-}
-
 /* COLLAPSIBLE */
 .collapsible {
   width: 100%;
@@ -284,7 +281,7 @@ nav img {
 
 .product .image {
   height: 100%;
-  width: 80px;
+  min-width: 80px !important;
 
   display: flex;
   justify-content: center;
@@ -328,4 +325,60 @@ nav img {
 .product .text .price {
   margin: 15px 0 0 0;
   font-size: 24px;
+}
+
+#planner {
+  width: 80%;
+  height: 70%;
+  background-color: var(--gray-light);
+  border: 1px dashed var(--gray-medium);
+  margin: 50px;
+}
+
+.right {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* SUMMARY */
+#summary {
+  border: 1px solid magenta;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 60vw;
+  background-color: white;
+  border-left: 2px solid black;
+
+  display: flex;
+  flex-flow: row;
+}
+
+#summary .close {
+  width: 5vw;
+  max-width: 60px;
+  border-right: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#summary .close:hover {
+  background-color: var(--gray-light);
+}
+
+#summary .close img {
+  width: 80%;
+  max-width: 30px;
+  height: 100%;
+}
+
+#summary.content {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
 }

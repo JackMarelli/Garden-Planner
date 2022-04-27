@@ -5,6 +5,7 @@ let testUrl = "https://httpbin.org/ip"; //va
 let url0 = "http://172.16.102.64/WebService/prova.php"; //non va se non sono sulla stessa rete locale 172.16.x.x
 let url1 = "http://localhost/server/info/plantera/website/index.html"; //va
 let url2 = "http://plantera.altervista.org/";
+let url3 = "http://localhost/server/info/plantera/Web%20Service/prova.php";
 
 //ELEMENTI DI DEFAULT
 let productsMenu = document.getElementById("products-menu");
@@ -12,16 +13,22 @@ console.log(productsMenu);
 
 //MAIN
 //get json from url
-let response = httpGet(testUrl);
+let response = httpGet(url3);
 console.log(response);
 
 let categoriesObj = JSON.parse(response);
-let testStr = categoriesObj.origin;
+let testStr;
+
+//test build menu
+for (let i = 0; i <= 3; i++) {
+    addCategory(i.toString());
+}
+
 
 //build categories menu
 for (let i = 0; i <= 3; i++) {
-    let str = i.toString();
-    addCategory(str + " " + testStr);
+    str = categoriesObj.categiorie[i];
+    addCategory(str);
 }
 
 //FUNCTIONS
