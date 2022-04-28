@@ -343,8 +343,7 @@ nav img {
 }
 
 /* SUMMARY */
-#summary {
-  border: 1px solid magenta;
+#summary, #details {
   position: absolute;
   right: 0;
   top: 0;
@@ -352,12 +351,13 @@ nav img {
   width: 60vw;
   background-color: white;
   border-left: 2px solid black;
+  transform: translateX(60vw);
 
   display: flex;
   flex-flow: row;
 }
 
-#summary .close {
+#summary .close, #details .close {
   width: 5vw;
   max-width: 60px;
   border-right: 2px solid black;
@@ -367,7 +367,7 @@ nav img {
   cursor: pointer;
 }
 
-#summary .close:hover {
+#summary .close:hover, #details .close:hover {
   background-color: var(--gray-light);
 }
 
@@ -381,4 +381,15 @@ nav img {
   display: flex;
   flex-flow: column;
   flex-grow: 1;
+}
+
+#summary .prodotto {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+#summary .action img {
+  width: 20px;
+  height: 20px;
 }

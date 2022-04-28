@@ -26,10 +26,12 @@ for (let i = 0; i <= 3; i++) {
 
 
 //build categories menu
+/*
 for (let i = 0; i <= 3; i++) {
     str = categoriesObj.categiorie[i];
     addCategory(str);
 }
+*/
 
 //FUNCTIONS
 function httpGet(theUrl) {
@@ -60,3 +62,34 @@ function addCategory(cat) {
     productsMenu.appendChild(newButton);
     productsMenu.appendChild(newCollapsible);
 }
+
+//SLIDE IN ELEMENTS
+const slideInSummary = document.getElementById("summary");
+const summaryCloseBtn = document.getElementById("summaryClose");
+const summaryOpenBtn = document.getElementById("summaryOpen");
+const detailsCloseBtn = document.getElementById("detailsClose");
+//close summary
+summaryCloseBtn.addEventListener("click", function () {
+    console.log("closing summary");
+    slideInSummary.style.transform = "translateX(60vw)";
+});
+
+//open summary
+summaryOpenBtn.addEventListener("click", function () {
+    console.log("opening summary");
+    slideInSummary.style.transform = "translateX(0)";
+});
+
+//open details with product id
+function openDetails(id) {
+    console.log("opening details with id " + id.toString());
+    document.getElementById("productName").innerHTML = id.toString();
+    slideInSummary.style.transform = "translateX(0)";
+}
+
+//close details
+detailsCloseBtn.addEventListener("click", function () {
+    console.log("closing details");
+    slideInSummary.style.transform = "translateX(60vw)";
+});
+
