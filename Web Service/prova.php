@@ -17,7 +17,6 @@
 		
 		$sql_query = "SELECT Categoria FROM prodotti ";
 		getDati($sql_query);
-
 	}
 
 	function getProductByCategoty($categoria){
