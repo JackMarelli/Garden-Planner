@@ -301,6 +301,7 @@ nav img {
   flex-grow: 1;
   width: 180px;
   min-width: 0;
+  justify-content: space-between;
 }
 
 .product .text .name {
@@ -323,7 +324,6 @@ nav img {
 }
 
 .product .text .price {
-  margin: 15px 0 0 0;
   font-size: 24px;
 }
 
@@ -392,4 +392,45 @@ nav img {
 #summary .action img {
   width: 20px;
   height: 20px;
+}
+
+#details .prodotto {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+#details .prodotto .text {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#details .prodotto .text .desc {
+  color:var(--gray-medium);
+}
+
+#details .prodotto img {
+  width: 40%;
+}
+
+#testRect {
+  width: 150px;
+  height: 90px;
+  background-color: var(--green-dark);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#testCirc {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+
+  background-color: var(--red);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
