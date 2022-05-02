@@ -21,7 +21,7 @@ let testStr;
 
 //test build menu
 for (let i = 0; i <= 3; i++) {
-    addCategory(i.toString());
+  addCategory(i.toString());
 }
 
 
@@ -33,34 +33,71 @@ for (let i = 0; i <= 3; i++) {
 }
 */
 
+//BUILD PLANNER DIMENSION AND SHAPE
+const urlParams = new URLSearchParams(window.location.search);
+const shape = urlParams.get("shape");
+const x = urlParams.get("x");
+const y = urlParams.get("y");
+const maxDimension = Math.max(x, y);
+const existingPlannerElement = document.getElementById("planner");
+
+console.log(x);
+console.log(y);
+console.log(shape);
+console.log(maxDimension);
+
+if (x == y) {
+  existingPlannerElement.style.height = "60%";
+  let plannerHeight = existingPlannerElement.clientHeight;
+  let plannerWidth = plannerHeight;
+  existingPlannerElement.style.width = plannerWidth;
+} else {
+  if (maxDimension == x) {
+    existingPlannerElement.style.width = "80%";
+    let plannerWidth = existingPlannerElement.clientWidth;
+    let plannerHeight = plannerWidth * y / x;
+    existingPlannerElement.style.height = plannerHeight;
+  } else if (maxDimension == y) {
+    existingPlannerElement.style.height = "60%";
+    let plannerHeight = existingPlannerElement.clientHeight;
+    let plannerWidth = plannerHeight * x / y;
+    existingPlannerElement.style.width = plannerWidth;
+  }
+}
+
+if (shape == "ellipse") {
+  console.log("applying border radius");
+  existingPlannerElement.style.borderRadius = "100%";
+}
+
 //FUNCTIONS
 function httpGet(theUrl) {
-    console.log("Try request")
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", theUrl, false); // false for synchronous request
-    xmlHttp.send(null);
-    return xmlHttp.response;
+  console.log("Try request")
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("GET", theUrl, false); // false for synchronous request
+  xmlHttp.send(null);
+  return xmlHttp.response;
 }
 
 function addCategory(cat) {
 
-    //TO CREATE:
-    //<button type="button" class="collapsible">Barbeque</button>
-    //<div id="barbeque" class="collapsible-content"></div>
+  //TO CREATE:
+  //<button type="button" class="collapsible">Barbeque</button>
+  //<div id="barbeque" class="collapsible-content"></div>
 
-    const newButton = document.createElement("button");
-    const newCollapsible = document.createElement("div");
-    const buttonText = document.createTextNode(cat);
+  const newButton = document.createElement("button");
+  const newCollapsible = document.createElement("div");
+  const buttonText = document.createTextNode(cat);
 
-    newButton.appendChild(buttonText);
+  newButton.appendChild(buttonText);
 
-    newButton.classList.add("collapsible");
-    newCollapsible.classList.add("collapsible-content");
+  newButton.classList.add("collapsible");
+  newCollapsible.classList.add("collapsible-content");
 
-    newCollapsible.setAttribute("id", cat)
+  newCollapsible.setAttribute("id", cat)
 
-    productsMenu.appendChild(newButton);
-    productsMenu.appendChild(newCollapsible);
+  productsMenu.appendChild(newButton);
+  productsMenu.appendChild(newCollapsible);
 }
 
 //SLIDE IN ELEMENTS
@@ -72,27 +109,27 @@ const slideInDetails = document.getElementById("details");
 
 //close summary
 summaryCloseBtn.addEventListener("click", function () {
-    console.log("closing summary");
-    slideInSummary.style.transform = "translateX(60vw)";
+  console.log("closing summary");
+  slideInSummary.style.transform = "translateX(60vw)";
 });
 
 //open summary
 summaryOpenBtn.addEventListener("click", function () {
-    console.log("opening summary");
-    slideInSummary.style.transform = "translateX(0)";
+  console.log("opening summary");
+  slideInSummary.style.transform = "translateX(0)";
 });
 
 //open details with product id
 function openDetails(id) {
-    console.log("opening details with id " + id.toString());
-    document.getElementById("detailsProductName").innerHTML = id.toString();
-    slideInDetails.style.transform = "translateX(0)";
+  console.log("opening details with id " + id.toString());
+  document.getElementById("detailsProductName").innerHTML = id.toString();
+  slideInDetails.style.transform = "translateX(0)";
 }
 
 //close details
 detailsCloseBtn.addEventListener("click", function () {
-    console.log("closing details");
-    slideInDetails.style.transform = "translateX(60vw)";
+  console.log("closing details");
+  slideInDetails.style.transform = "translateX(60vw)";
 });
 
 // target elements with the "draggable" class
@@ -115,19 +152,19 @@ interact('.draggable')
       move: dragMoveListener,
 
       // call this function on every dragend event
-      end (event) {
+      end(event) {
         var textEl = event.target.querySelector('p')
 
         textEl && (textEl.textContent =
           'moved a distance of ' +
           (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
-                     Math.pow(event.pageY - event.y0, 2) | 0))
+            Math.pow(event.pageY - event.y0, 2) | 0))
             .toFixed(2) + 'px')
       }
     }
   })
 
-function dragMoveListener (event) {
+function dragMoveListener(event) {
   var target = event.target
   // keep the dragged position in the data-x/data-y attributes
   var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx

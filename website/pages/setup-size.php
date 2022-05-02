@@ -48,6 +48,7 @@
         </div>
         (Metri)
         <div class="mt-3 btn-circle center" onclick="redirectToPlanner()">
+        <input type="hidden" id="shape" value="<?php echo $_GET["shape"]; ?>">
           <img src="../../images/elements/icons/arrow.svg" alt="" />
         </div>
       </div>
