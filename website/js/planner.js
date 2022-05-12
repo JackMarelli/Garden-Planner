@@ -7,31 +7,33 @@ let url1 = "http://localhost/server/info/plantera/website/index.html"; //va
 let url2 = "http://plantera.altervista.org/";
 let url3 = "http://localhost/server/info/plantera/Web%20Service/prova.php";
 
+let getCategoriesUrl = "http://plantera.altervista.org/getAllCategorie.php"
+
 //ELEMENTI DI DEFAULT
 let productsMenu = document.getElementById("products-menu");
-console.log(productsMenu);
 
 //MAIN
 //get json from url
-let response = httpGet(testUrl);
+let response = httpGet(getCategoriesUrl);
 console.log(response);
 
 let categoriesObj = JSON.parse(response);
+console.log(categoriesObj);
 let testStr;
 
 //test build menu
+/*
 for (let i = 0; i <= 3; i++) {
   addCategory(i.toString());
 }
-
+*/
 
 //build categories menu
-/*
 for (let i = 0; i <= 3; i++) {
     str = categoriesObj.categiorie[i];
     addCategory(str);
 }
-*/
+
 
 //BUILD PLANNER DIMENSION AND SHAPE
 const urlParams = new URLSearchParams(window.location.search);

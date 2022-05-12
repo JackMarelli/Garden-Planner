@@ -21,7 +21,7 @@ function getDati($sql_query){
 
     /* output result in required format */
     
-        header('Content-type: application/json');
+        header('Access-Control-Allow-Headers: *', 'Content-type: application/json');
         echo json_encode(array('products'=>$products));
         
     mysqli_close($conn);
