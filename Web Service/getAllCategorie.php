@@ -8,24 +8,25 @@ function getAllCategorie(){
 }
 
 function getDati($sql_query){
-    include "config.php";
+    require_once "config.php";
 
     $resultset = mysqli_query($conn, $sql_query) or die("database error:". mysqli_error($conn));	
     $products = array();
     if(mysqli_num_rows($resultset)) {
         while($product = mysqli_fetch_assoc($resultset)) {
 
-            $products[] = array('product'=>$product);
+            $products[] = $product;
         }
     }
 
     /* output result in required format */
     
-        header('Access-Control-Allow-Headers: *', 'Content-type: application/json');
-        echo json_encode(array('products'=>$products));
+        echo json_encode($products);
         
     mysqli_close($conn);
 
 }
+
+    getAllCategorie();
 
 ?>

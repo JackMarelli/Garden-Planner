@@ -1,38 +1,7 @@
 console.log("Init requests.js");
 
-//URL VARI
-let testUrl = "https://httpbin.org/ip"; //va
-let url0 = "http://172.16.102.64/WebService/prova.php"; //non va se non sono sulla stessa rete locale 172.16.x.x
-let url1 = "http://localhost/server/info/plantera/website/index.html"; //va
-let url2 = "http://plantera.altervista.org/";
-let url3 = "http://localhost/server/info/plantera/Web%20Service/prova.php";
-
-let getCategoriesUrl = "http://plantera.altervista.org/getAllCategorie.php"
-
-//ELEMENTI DI DEFAULT
-let productsMenu = document.getElementById("products-menu");
-
-//MAIN
-//get json from url
-let response = httpGet(getCategoriesUrl);
-console.log(response);
-
-let categoriesObj = JSON.parse(response);
-console.log(categoriesObj);
-let testStr;
-
-//test build menu
-/*
-for (let i = 0; i <= 3; i++) {
-  addCategory(i.toString());
-}
-*/
-
-//build categories menu
-for (let i = 0; i <= 3; i++) {
-    str = categoriesObj.categiorie[i];
-    addCategory(str);
-}
+//CALLS
+createMenu();
 
 
 //BUILD PLANNER DIMENSION AND SHAPE
@@ -72,43 +41,14 @@ if (shape == "ellipse") {
   existingPlannerElement.style.borderRadius = "100%";
 }
 
-//FUNCTIONS
-function httpGet(theUrl) {
-  console.log("Try request")
-  var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("GET", theUrl, false); // false for synchronous request
-  xmlHttp.send(null);
-  return xmlHttp.response;
-}
-
-function addCategory(cat) {
-
-  //TO CREATE:
-  //<button type="button" class="collapsible">Barbeque</button>
-  //<div id="barbeque" class="collapsible-content"></div>
-
-  const newButton = document.createElement("button");
-  const newCollapsible = document.createElement("div");
-  const buttonText = document.createTextNode(cat);
-
-  newButton.appendChild(buttonText);
-
-  newButton.classList.add("collapsible");
-  newCollapsible.classList.add("collapsible-content");
-
-  newCollapsible.setAttribute("id", cat)
-
-  productsMenu.appendChild(newButton);
-  productsMenu.appendChild(newCollapsible);
-}
-
-//SLIDE IN ELEMENTS
+//ELEMENTS
 const slideInSummary = document.getElementById("summary");
 const summaryCloseBtn = document.getElementById("summaryClose");
 const summaryOpenBtn = document.getElementById("summaryOpen");
 const detailsCloseBtn = document.getElementById("detailsClose");
 const slideInDetails = document.getElementById("details");
 
+//EVENTLISTENERS
 //close summary
 summaryCloseBtn.addEventListener("click", function () {
   console.log("closing summary");
@@ -133,6 +73,15 @@ detailsCloseBtn.addEventListener("click", function () {
   console.log("closing details");
   slideInDetails.style.transform = "translateX(60vw)";
 });
+
+//open menu category
+let catButtons = document.getElementsByTagName("button");
+console.log(catButtons);
+for (let k = 0; k < catButtons.length; k++) {
+  catButtons[k].addEventListener("click", () => {
+    createSubMenu(catButtons[k].innerText);
+  });
+}
 
 // target elements with the "draggable" class
 interact('.draggable')
@@ -182,3 +131,63 @@ function dragMoveListener(event) {
 
 // this function is used later in the resizing and gesture demos
 window.dragMoveListener = dragMoveListener
+
+//FUNCTIONS
+function httpGet(theUrl) {
+  console.log("Try request")
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("GET", theUrl, false); // false for synchronous request
+  xmlHttp.send(null);
+  return xmlHttp.response;
+}
+
+function addCategory(cat) {
+
+  //TO CREATE:
+  //<button type="button" class="collapsible">Barbeque</button>
+  //<div id="barbeque" class="collapsible-content"></div>
+
+  let productsMenu = document.getElementById("products-menu");
+
+  const newButton = document.createElement("button");
+  const newCollapsible = document.createElement("div");
+  const buttonText = document.createTextNode(cat);
+
+  newButton.appendChild(buttonText);
+
+  newButton.classList.add("collapsible");
+  newCollapsible.classList.add("collapsible-content");
+
+  newCollapsible.setAttribute("id", cat)
+
+  productsMenu.appendChild(newButton);
+  productsMenu.appendChild(newCollapsible);
+}
+
+function createMenu() {
+  let urlCategorie = "http://localhost/server/info/plantera/Web%20Service/getAllCategorie.php";
+
+  //get json from url
+  let response = httpGet(urlCategorie);
+
+  let categoriesArr = JSON.parse(response);
+  console.log(categoriesArr);
+
+  //build categories menu
+  for (let i = 0; i <= 2; i++) {
+    str = categoriesArr[i].Categoria;
+    addCategory(str);
+  }
+}
+
+function createSubMenu(category) {
+  let url = "http://localhost/server/info/plantera/Web%20Service/getProductByCategory.php?cat=" + category;
+  console.log(category);
+  let response = httpGet(url);
+  let productsArr = JSON.parse(response);
+  console.log(productsArr);
+}
+
+function addProduct() {
+  //TODO
+}
