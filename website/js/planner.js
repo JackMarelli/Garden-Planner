@@ -133,10 +133,10 @@ function dragMoveListener(event) {
 window.dragMoveListener = dragMoveListener
 
 //FUNCTIONS
-function httpGet(theUrl) {
-  console.log("Try request")
+function httpGet(url) {
+  console.log("Requested URL: " + url)
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("GET", theUrl, false); // false for synchronous request
+  xmlHttp.open("GET", url, false); // false for synchronous request
   xmlHttp.send(null);
   return xmlHttp.response;
 }
@@ -152,12 +152,15 @@ function addCategory(cat) {
   const newButton = document.createElement("button");
   const newCollapsible = document.createElement("div");
   const buttonText = document.createTextNode(cat);
+  const ul = document.createElement("ul");
 
   newButton.appendChild(buttonText);
+  newCollapsible.appendChild(ul);
 
   newButton.classList.add("collapsible");
   newCollapsible.classList.add("collapsible-content");
 
+  ul.setAttribute("id", cat + "Ul")
   newCollapsible.setAttribute("id", cat)
 
   productsMenu.appendChild(newButton);
@@ -169,12 +172,10 @@ function createMenu() {
 
   //get json from url
   let response = httpGet(urlCategorie);
-
   let categoriesArr = JSON.parse(response);
-  console.log(categoriesArr);
 
   //build categories menu
-  for (let i = 0; i <= 2; i++) {
+  for (let i = 0; i < categoriesArr.length; i++) {
     str = categoriesArr[i].Categoria;
     addCategory(str);
   }
@@ -182,12 +183,73 @@ function createMenu() {
 
 function createSubMenu(category) {
   let url = "http://localhost/server/info/plantera/Web%20Service/getProductByCategory.php?cat=" + category;
-  console.log(category);
   let response = httpGet(url);
   let productsArr = JSON.parse(response);
-  console.log(productsArr);
+
+  console.log(productsArr.length);
+
+  let catUl = document.getElementById(category + "Ul");
+  catUl.innerHTML = "";
+
+  for (let f = 0; f < productsArr.length; f++) {
+    console.log(productsArr[f]);
+    let prodName = productsArr[f].NomeProdotto;
+    let prodPrice = productsArr[f].Costo;
+    let prodImgUrl = productsArr[f].immagine;
+
+    addProduct(category, prodImgUrl, prodName, prodPrice);
+  }
+
+  let innerHeight = $('.left').height();
+  console.log(innerHeight);
 }
 
-function addProduct() {
-  //TODO
+function addProduct(cat, imageUrl, name, price) {
+  //TO CREATE:
+  //<li></li>
+  //<div class="product row"></div>
+  //<div class="image">
+
+  let catUl = document.getElementById(cat + "Ul");
+  let li = document.createElement("li");
+  let divProductRow = document.createElement("div");
+  let divImage = document.createElement("div");
+  let image = document.createElement("img");
+  let divTextCol = document.createElement("div");
+  let divName = document.createElement("div");
+  let divRow = document.createElement("div");
+  let divPriceMr1 = document.createElement("div");
+  let divSeemore = document.createElement("div");
+  let divAggiungi = document.createElement("div");
+
+  divProductRow.classList.add("product");
+  divProductRow.classList.add("row");
+  divImage.classList.add("image");
+  divTextCol.classList.add("text");
+  divTextCol.classList.add("col");
+  divName.classList.add("name");
+  divRow.classList.add("row");
+  divPriceMr1.classList.add("price");
+  divPriceMr1.classList.add("mr-1");
+  divSeemore.classList.add("seemore");
+  divAggiungi.classList.add("btn");
+  divAggiungi.classList.add("cta-primary");
+  divAggiungi.classList.add("action");
+
+  image.src = imageUrl;
+  divName.innerText = name;
+  divPriceMr1.innerText = price + "€";
+  divAggiungi.innerText = "Aggiungi";
+  divSeemore.innerText = "See more...";
+
+  divImage.appendChild(image);
+  divRow.appendChild(divPriceMr1);
+  divRow.appendChild(divSeemore);
+  divTextCol.appendChild(divName);
+  divTextCol.appendChild(divRow);
+  divTextCol.appendChild(divAggiungi);
+  divProductRow.appendChild(divImage);
+  divProductRow.appendChild(divTextCol);
+  li.appendChild(divProductRow);
+  catUl.appendChild(li);
 }

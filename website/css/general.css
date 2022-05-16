@@ -234,10 +234,14 @@ nav img {
 /* PLANNER */
 .left {
   min-width: 300px;
-  overflow: auto;
+  width: 300px;
   height: 100%;
   border-right: solid var(--gray-medium);
-  resize: horizontal;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 /* COLLAPSIBLE */
@@ -339,7 +343,7 @@ nav img {
 
 .right {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
   justify-content: space-between;
   align-items: center;
 }

@@ -2,7 +2,7 @@
 
 function getAllCategorie(){
 		
-    $sql_query = "SELECT Categoria FROM prodotti ";
+    $sql_query = "SELECT DISTINCT Categoria FROM prodotti ";
     getDati($sql_query);
 
 }
