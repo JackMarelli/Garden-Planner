@@ -40,6 +40,5 @@ LINGUAGGI: HTML, CSS, JavaScript, MySQL, PHP.
 
 ANALISI DI MERCATO:
 L'unica idea simile che ho trovato è quella di Gardena (https://my-garden.gardena.com/it)
-diversa in quanto non mette limiti alle dimensioni e forma del giardino,
 non si rifà ad un database di oggetti specifici ed esistenti, ma a piante e
 altri oggetti di dimensioni generiche e immagini stock.
