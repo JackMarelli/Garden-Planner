@@ -1,5 +1,8 @@
 <?php
 
+$id = $_GET["id"];
+getProductByID($id);
+
 function getProductByID($id){
 		
     $sql_query = "SELECT ID,NomeProdotto,Categoria,InformazioniProdotti,Larghezza,Lunghezza,Costo,immagine FROM prodotti WHERE ID='$id'";
@@ -25,16 +28,13 @@ function getDatiAll($sql_query){
             $myObj->Lunghezza = $product['Lunghezza'];
             $myObj->Costo = $product['Costo'];
             $myObj->Immagine = $product['immagine'];
-
-            $products[] = array('product'=>$myObj);
-            
         }
     }
 
     /* output result in required format */
     
         header('Content-type: application/json');
-        echo json_encode(array('products'=>$products));
+        echo json_encode($myObj);
         
     mysqli_close($conn);
 

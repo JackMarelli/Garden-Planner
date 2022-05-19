@@ -1,10 +1,6 @@
 console.log("Init requests.js");
 
-//CALLS
-createMenu();
-
-
-//BUILD PLANNER DIMENSION AND SHAPE
+//VARIABILI GLOBALI
 const urlParams = new URLSearchParams(window.location.search);
 const shape = urlParams.get("shape");
 const x = urlParams.get("x");
@@ -12,6 +8,16 @@ const y = urlParams.get("y");
 const maxDimension = Math.max(x, y);
 const existingPlannerElement = document.getElementById("planner");
 
+let catButtons = document.getElementsByTagName("button");
+let resetBtn = document.getElementById("reset");
+
+let spesa = 0;
+
+
+//CALLS
+createMenu();
+
+//BUILD PLANNER DIMENSION AND SHAPE
 console.log(x);
 console.log(y);
 console.log(shape);
@@ -37,7 +43,6 @@ if (x == y) {
 }
 
 if (shape == "ellipse") {
-  console.log("applying border radius");
   existingPlannerElement.style.borderRadius = "100%";
 }
 
@@ -75,13 +80,16 @@ detailsCloseBtn.addEventListener("click", function () {
 });
 
 //open menu category
-let catButtons = document.getElementsByTagName("button");
-console.log(catButtons);
 for (let k = 0; k < catButtons.length; k++) {
   catButtons[k].addEventListener("click", () => {
     createSubMenu(catButtons[k].innerText);
   });
 }
+
+//reset planner
+resetBtn.addEventListener("click", () => {
+  document.getElementById("planner").innerHTML = "";
+});
 
 // target elements with the "draggable" class
 interact('.draggable')
@@ -134,7 +142,6 @@ window.dragMoveListener = dragMoveListener
 
 //FUNCTIONS
 function httpGet(url) {
-  console.log("Requested URL: " + url)
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("GET", url, false); // false for synchronous request
   xmlHttp.send(null);
@@ -186,32 +193,30 @@ function createSubMenu(category) {
   let response = httpGet(url);
   let productsArr = JSON.parse(response);
 
-  console.log(productsArr.length);
-
   let catUl = document.getElementById(category + "Ul");
   catUl.innerHTML = "";
 
   for (let f = 0; f < productsArr.length; f++) {
-    console.log(productsArr[f]);
+    let id = productsArr[f].ID;
     let prodName = productsArr[f].NomeProdotto;
     let prodPrice = productsArr[f].Costo;
     let prodImgUrl = productsArr[f].immagine;
 
-    addProduct(category, prodImgUrl, prodName, prodPrice);
+    addProduct(category, id, prodImgUrl, prodName, prodPrice);
   }
 
   let innerHeight = $('.left').height();
   console.log(innerHeight);
 }
 
-function addProduct(cat, imageUrl, name, price) {
+function addProduct(cat, id, imageUrl, name, price) {
   //TO CREATE:
   //<li></li>
   //<div class="product row"></div>
   //<div class="image">
 
   let catUl = document.getElementById(cat + "Ul");
-  let li = document.createElement("li");
+  let li = document.createElement("div");
   let divProductRow = document.createElement("div");
   let divImage = document.createElement("div");
   let image = document.createElement("img");
@@ -223,7 +228,6 @@ function addProduct(cat, imageUrl, name, price) {
   let divAggiungi = document.createElement("div");
 
   divProductRow.classList.add("product");
-  divProductRow.classList.add("row");
   divImage.classList.add("image");
   divTextCol.classList.add("text");
   divTextCol.classList.add("col");
@@ -241,6 +245,57 @@ function addProduct(cat, imageUrl, name, price) {
   divPriceMr1.innerText = price + "€";
   divAggiungi.innerText = "Aggiungi";
   divSeemore.innerText = "See more...";
+
+  divAggiungi.addEventListener("click", () => {
+
+    //prod http request
+    let prodUrl = "http://localhost/server/info/plantera/Web%20Service/getProductById.php?id=" + id;
+    let response = httpGet(prodUrl);
+    let obj = JSON.parse(response);
+    console.log(id);
+
+    //add to planner
+    let newDraggable = document.createElement("div");
+    console.log(obj.Larghezza);
+    console.log(obj.Lunghezza);
+    console.log(obj.Immagine);
+    newDraggable.innerText = obj.NomeProdotto;
+    newDraggable.style.width = obj.Larghezza;
+    newDraggable.style.height = obj.Lunghezza;
+    newDraggable.style.backgroundImage = "url("+obj.Immagine+")";
+    newDraggable.style.position = "absolute";
+    newDraggable.classList.add("draggable");
+    document.getElementById("planner").insertBefore(newDraggable, document.getElementById("planner").children[1]);
+  
+    //add to summary
+    let summaryList = document.getElementById("summaryList");
+    let slProd = document.createElement("div");
+    let slNome = document.createElement("div");
+    let slPrezzo = document.createElement("div");
+
+    slProd.classList.add("mx-3");
+    slProd.classList.add("prodotto");
+    slNome.classList.add("nome");
+    slPrezzo.classList.add("prezzo");
+
+    slNome.innerText = obj.NomeProdotto;
+    slPrezzo.innerText = obj.Costo +"€";
+
+    slProd.appendChild(slNome);
+    slProd.appendChild(slPrezzo);
+    summaryList.appendChild(slProd);
+
+    spesa += parseInt(obj.Costo);
+    document.getElementById("totale").innerText = "Totale: " + spesa + "€";
+
+    /*
+    <div class="mx-3 prodotto">
+        <div class="action"><img src="../../images/elements/icons/icons8-close.svg" alt=""></div>
+        <div class="nome">Prodotto 1 d'esempio</div>
+        <div class="prezzo">999€</div>
+    </div>
+    */
+  });
 
   divImage.appendChild(image);
   divRow.appendChild(divPriceMr1);
