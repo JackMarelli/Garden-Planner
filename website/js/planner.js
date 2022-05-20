@@ -7,6 +7,11 @@ const x = urlParams.get("x");
 const y = urlParams.get("y");
 const maxDimension = Math.max(x, y);
 const existingPlannerElement = document.getElementById("planner");
+const slideInSummary = document.getElementById("summary");
+const summaryCloseBtn = document.getElementById("summaryClose");
+const summaryOpenBtn = document.getElementById("summaryOpen");
+const detailsCloseBtn = document.getElementById("detailsClose");
+const slideInDetails = document.getElementById("details");
 
 let catButtons = document.getElementsByTagName("button");
 let resetBtn = document.getElementById("reset");
@@ -45,13 +50,6 @@ if (x == y) {
 if (shape == "ellipse") {
   existingPlannerElement.style.borderRadius = "100%";
 }
-
-//ELEMENTS
-const slideInSummary = document.getElementById("summary");
-const summaryCloseBtn = document.getElementById("summaryClose");
-const summaryOpenBtn = document.getElementById("summaryOpen");
-const detailsCloseBtn = document.getElementById("detailsClose");
-const slideInDetails = document.getElementById("details");
 
 //EVENTLISTENERS
 //close summary
@@ -260,6 +258,12 @@ function addProduct(cat, id, imageUrl, name, price) {
     console.log(obj.Lunghezza);
     console.log(obj.Immagine);
     newDraggable.innerText = obj.NomeProdotto;
+
+    let newProdWidth;
+    let newProdHeight;
+
+    
+
     newDraggable.style.width = obj.Larghezza;
     newDraggable.style.height = obj.Lunghezza;
     newDraggable.style.backgroundImage = "url("+obj.Immagine+")";

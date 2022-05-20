@@ -346,8 +346,6 @@ nav img {
   height: 70%;
   background-color: var(--gray-light);
   border: 1px dashed var(--gray-medium);
-  margin: 50px;
-
   overflow: hidden;
 }
 

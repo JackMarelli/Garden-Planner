@@ -3,7 +3,6 @@
   height: 100%;
   width: 100%;
   display: flex;
-  overflow: hidden;
 }
 
 .center {
@@ -15,11 +14,13 @@
 .row {
   display: flex;
   flex-flow: row;
+  overflow-y: hidden;
 }
 
 .col {
-  display: flex;
+  /* display: flex; */
   flex-flow: column;
+  overflow-y: auto;
 }
 
 .fg-1 {
