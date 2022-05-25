@@ -23,26 +23,24 @@ let spesa = 0;
 createMenu();
 
 //BUILD PLANNER DIMENSION AND SHAPE
-console.log(x);
-console.log(y);
-console.log(shape);
-console.log(maxDimension);
+let plannerWidth;
+let plannerHeight;
 
 if (x == y) {
   existingPlannerElement.style.height = "60%";
-  let plannerHeight = existingPlannerElement.clientHeight;
-  let plannerWidth = plannerHeight;
+  plannerHeight = existingPlannerElement.clientHeight;
+  plannerWidth = plannerHeight;
   existingPlannerElement.style.width = plannerWidth;
 } else {
   if (maxDimension == x) {
     existingPlannerElement.style.width = "80%";
-    let plannerWidth = existingPlannerElement.clientWidth;
-    let plannerHeight = plannerWidth * y / x;
+    plannerWidth = existingPlannerElement.clientWidth;
+    plannerHeight = plannerWidth * y / x;
     existingPlannerElement.style.height = plannerHeight;
   } else if (maxDimension == y) {
     existingPlannerElement.style.height = "60%";
-    let plannerHeight = existingPlannerElement.clientHeight;
-    let plannerWidth = plannerHeight * x / y;
+    plannerHeight = existingPlannerElement.clientHeight;
+    plannerWidth = plannerHeight * x / y;
     existingPlannerElement.style.width = plannerWidth;
   }
 }
@@ -67,7 +65,7 @@ summaryOpenBtn.addEventListener("click", function () {
 //open details with product id
 function openDetails(id) {
   console.log("opening details with id " + id.toString());
-  document.getElementById("detailsProductName").innerHTML = id.toString();
+  //document.getElementById("detailsProductName").innerHTML = id.toString();
   slideInDetails.style.transform = "translateX(0)";
 }
 
@@ -202,9 +200,6 @@ function createSubMenu(category) {
 
     addProduct(category, id, prodImgUrl, prodName, prodPrice);
   }
-
-  let innerHeight = $('.left').height();
-  console.log(innerHeight);
 }
 
 function addProduct(cat, id, imageUrl, name, price) {
@@ -244,61 +239,186 @@ function addProduct(cat, id, imageUrl, name, price) {
   divAggiungi.innerText = "Aggiungi";
   divSeemore.innerText = "See more...";
 
+  //OPEN DETAILS BTN
+  divSeemore.addEventListener("click", () => {
+
+    //prod http request
+    let prodUrl = "http://localhost/server/info/plantera/Web%20Service/getProductById.php?id=" + id;
+    let response = httpGet(prodUrl);
+    let obj = JSON.parse(response);
+    console.log("item id: " + id);
+    openDetails(id);
+
+    /*
+      <div class="m-3 prodotto">
+        <img src="../../images/2_bbq.png" alt="errore">
+        <div class="text">
+          <h1 id="detailsProductName" class="mx-3 nome">Nome Prodotto</h1>
+          <div id="productDesc" class="m-3 desc">Lorem ipsum dolor sit amet</div>
+          <div id="productPrice" class="mx-3 prezzo">699€</div>
+        </div>
+      </div>
+      <div id="propTable" class="prop">Qui apparirà la tabella dei dettagli</div>
+    */
+
+    let divM3Prodotto = document.createElement("div");
+    let img = document.createElement("img");
+    let divText = document.createElement("div");
+    let h1Mx3Nome = document.createElement("h1");
+    let divM3Desc = document.createElement("div");
+    let divMx3Prezzo = document.createElement("div");
+    let divProp = document.createElement("div");
+
+    divM3Prodotto.classList.add("m-3");
+    divM3Prodotto.classList.add("prodotto");
+    divText.classList.add("text");
+    h1Mx3Nome.classList.add("mx-3");
+    h1Mx3Nome.classList.add("nome");
+    divM3Desc.classList.add("m-3");
+    divM3Desc.classList.add("desc");
+    divMx3Prezzo.classList.add("m-3");
+    divMx3Prezzo.classList.add("prezzo");
+    divProp.classList.add("prop");
+    img.classList.add("m-3");
+
+    h1Mx3Nome.innerText = obj.NomeProdotto;
+    divM3Desc.innerText = obj.Categoria + ", " + obj.Larghezza + "x" + obj.Lunghezza;
+    divMx3Prezzo.innerText = obj.Costo + "€"
+    img.src = obj.Immagine;
+    divProp.style.width = "100%";
+
+    let propCount = Object.keys(obj.InformazioniProdotti).length;
+    for (let p = 0; p < propCount; p++) {
+      console.log(Object.keys(obj.InformazioniProdotti)[p]);
+
+      let newRow = document.createElement("div");
+      //newRow.style.width = "100%";
+      newRow.classList.add("row");
+      newRow.classList.add("justify-between");
+      newRow.classList.add("mx-3");
+
+      let newKey = document.createElement("p");
+      let newVal = document.createElement("p");
+
+      newKey.innerText = Object.keys(obj.InformazioniProdotti)[p] + ": ";
+      newVal.innerText = Object.values(obj.InformazioniProdotti)[p];
+
+      newKey.style.fontWeight = "bold";
+      newVal.style.flexGrow = "1";
+      newVal.style.textAlign = "right";
+
+      newRow.appendChild(newKey);
+      newRow.appendChild(newVal);
+
+      divProp.appendChild(newRow);
+    }
+
+    document.getElementById("detailsContent").innerHTML = "";
+
+    divText.appendChild(h1Mx3Nome);
+    divText.appendChild(divM3Desc);
+    divText.appendChild(divMx3Prezzo);
+    divM3Prodotto.appendChild(img);
+    divM3Prodotto.appendChild(divText);
+    divM3Prodotto.appendChild(divProp);
+    document.getElementById("detailsContent").appendChild(divM3Prodotto);
+
+
+
+  });
+
+  //ADD TO PLANNER BTN
   divAggiungi.addEventListener("click", () => {
 
     //prod http request
     let prodUrl = "http://localhost/server/info/plantera/Web%20Service/getProductById.php?id=" + id;
     let response = httpGet(prodUrl);
     let obj = JSON.parse(response);
-    console.log(id);
+    console.log("item id: " + id);
 
-    //add to planner
-    let newDraggable = document.createElement("div");
-    console.log(obj.Larghezza);
-    console.log(obj.Lunghezza);
-    console.log(obj.Immagine);
-    newDraggable.innerText = obj.NomeProdotto;
+    if (obj.Categoria == "Manto Erboso") {
+      document.getElementById("planner").style.backgroundImage = "url(" + obj.Immagine + ")";
+      document.getElementById("planner").style.backgroundSize = "100% 100%";
+      document.getElementById("planner").style.backgroundPosition = "center center";
 
-    let newProdWidth;
-    let newProdHeight;
+      //add to summary
+      let summaryList = document.getElementById("summaryList");
+      let slProd = document.createElement("div");
+      let slNome = document.createElement("div");
+      let slPrezzo = document.createElement("div");
 
-    
+      slProd.classList.add("mx-3");
+      slProd.classList.add("prodotto");
+      slNome.classList.add("nome");
+      slPrezzo.classList.add("prezzo");
 
-    newDraggable.style.width = obj.Larghezza;
-    newDraggable.style.height = obj.Lunghezza;
-    newDraggable.style.backgroundImage = "url("+obj.Immagine+")";
-    newDraggable.style.position = "absolute";
-    newDraggable.classList.add("draggable");
-    document.getElementById("planner").insertBefore(newDraggable, document.getElementById("planner").children[1]);
-  
-    //add to summary
-    let summaryList = document.getElementById("summaryList");
-    let slProd = document.createElement("div");
-    let slNome = document.createElement("div");
-    let slPrezzo = document.createElement("div");
+      slNome.innerText = obj.NomeProdotto;
+      slPrezzo.innerText = obj.Costo + "€";
 
-    slProd.classList.add("mx-3");
-    slProd.classList.add("prodotto");
-    slNome.classList.add("nome");
-    slPrezzo.classList.add("prezzo");
+      slProd.appendChild(slNome);
+      slProd.appendChild(slPrezzo);
+      summaryList.appendChild(slProd);
 
-    slNome.innerText = obj.NomeProdotto;
-    slPrezzo.innerText = obj.Costo +"€";
+      spesa += parseInt(obj.Costo);
+      document.getElementById("totale").innerText = "Totale: " + spesa + "€";
+    } else {
+      //add to planner
+      let newDraggable = document.createElement("div");
+      console.log(obj.Larghezza);
+      console.log(obj.Lunghezza);
 
-    slProd.appendChild(slNome);
-    slProd.appendChild(slPrezzo);
-    summaryList.appendChild(slProd);
+      let newKeyrodWidth;
+      let newKeyrodHeight;
 
-    spesa += parseInt(obj.Costo);
-    document.getElementById("totale").innerText = "Totale: " + spesa + "€";
+      let xCm = x * 100;
+      let yCm = y * 100;
 
-    /*
-    <div class="mx-3 prodotto">
-        <div class="action"><img src="../../images/elements/icons/icons8-close.svg" alt=""></div>
-        <div class="nome">Prodotto 1 d'esempio</div>
-        <div class="prezzo">999€</div>
-    </div>
-    */
+      newKeyrodWidth = Math.floor(obj.Larghezza * plannerWidth / xCm);
+      newKeyrodHeight = Math.floor(obj.Lunghezza * plannerHeight / yCm);
+
+      console.log(newKeyrodWidth + ", " + newKeyrodHeight);
+
+      //xCm:Larghezza=plannerWidth:x
+      //x = Larghezza*plannerWidth/xCm
+
+      //newDraggable.innerText = obj.NomeProdotto;
+      newDraggable.style.width = newKeyrodWidth;
+      newDraggable.style.height = newKeyrodHeight;
+      newDraggable.style.backgroundImage = "url(" + obj.Immagine + ")";
+      newDraggable.style.position = "absolute";
+      newDraggable.classList.add("draggable");
+      document.getElementById("planner").insertBefore(newDraggable, document.getElementById("planner").children[1]);
+
+      //add to summary
+      let summaryList = document.getElementById("summaryList");
+      let slProd = document.createElement("div");
+      let slNome = document.createElement("div");
+      let slPrezzo = document.createElement("div");
+
+      slProd.classList.add("mx-3");
+      slProd.classList.add("prodotto");
+      slNome.classList.add("nome");
+      slPrezzo.classList.add("prezzo");
+
+      slNome.innerText = obj.NomeProdotto;
+      slPrezzo.innerText = obj.Costo + "€";
+
+      slProd.appendChild(slNome);
+      slProd.appendChild(slPrezzo);
+      summaryList.appendChild(slProd);
+
+      spesa += parseInt(obj.Costo);
+      document.getElementById("totale").innerText = "Totale: " + spesa + "€";
+
+      /*
+      <div class="mx-3 prodotto">
+          <div class="action"><img src="../../images/elements/icons/icons8-close.svg" alt=""></div>
+          <div class="nome">Prodotto 1 d'esempio</div>
+          <div class="prezzo">999€</div>
+      </div>
+      */
+    }
+
   });
 
   divImage.appendChild(image);

@@ -381,6 +381,8 @@ nav img {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  overflow: hidden;
 }
 
 #summary .close:hover,
@@ -389,9 +391,7 @@ nav img {
 }
 
 #summary .close img {
-  width: 80%;
-  max-width: 30px;
-  height: 100%;
+  max-width: 60%;
 }
 
 #summary.content {
@@ -411,6 +411,10 @@ nav img {
   height: 20px;
 }
 
+#details .content {
+  overflow: auto;
+}
+
 #details .prodotto {
   display: flex;
   flex-flow: row wrap;
@@ -427,7 +431,7 @@ nav img {
 }
 
 #details .prodotto img {
-  width: 40%;
+  max-width: 300px;
 }
 
 #testRect {
